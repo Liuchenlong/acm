@@ -43,14 +43,9 @@ int main()
         while(head+1<tail&&getup(k,Q[tail-1])*getdown(Q[tail-1],Q[tail-2])<=getup(Q[tail-1],Q[tail-2])*getdown(k,Q[tail-1]))
                 tail--;
         Q[tail++]=k;
-        int l=0,r=tail-2;
-        while(l<=r)
-        {
-            int mid=(l+r)/2;
-            if(getup(i,Q[mid])*getdown(i,Q[mid+1])<=getup(i,Q[mid+1])*getdown(i,Q[mid]))l=mid+1;
-            else r=mid-1;
-        }
-        ans=max(ans,getdp(i,Q[l]));
+        while(head+1<tail&&getup(i,Q[head+1])*getdown(i,Q[head])>=getup(i,Q[head])*getdown(i,Q[head+1]))
+            head++;
+        ans=max(ans,getdp(i,Q[head]));
     }
     printf("%d\n",(int)(1000*ans));
     return 0;
