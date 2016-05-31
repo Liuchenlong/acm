@@ -43,7 +43,6 @@ int main()
     int ans=0;
     for(int i=0;i<32;i++)
     {
-//        printf("%d %d\n",bita[i],bitb[i]);
         if(bita[i]==bitb[i])
             ;
         else if(bita[i]+bitb[i]==n)
