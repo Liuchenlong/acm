@@ -39,8 +39,6 @@ long long C(int n,int m)
 int l[11],r[11];
 int main()
 {
-//    freopen("1.txt","r",stdin);
-//    freopen("2.out","w",stdout);
     init();
     int T;
     scanf("%d",&T);
