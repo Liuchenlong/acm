@@ -10,6 +10,7 @@
 using namespace std;
 
 const long long MOD=(479<<21)+1; 
+const int MOD=998244353;
 const int g=3;
 long long qp[30];
 long long qpow(long long x,long long k,long long mod)
