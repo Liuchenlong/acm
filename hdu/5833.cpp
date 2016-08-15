@@ -1,9 +1,15 @@
-#include <iostream>
-#include <cstdio>
-#include <cstring>
-#include <algorithm>
+#include<stdio.h>
+#include<cmath>
+#include<iostream>
+#include<string.h>
+#include<algorithm>
+#include<queue>
+#include<set>
+#include<vector>
+#include<map>
 using namespace std;
-#define ll long long
+#define eps 1e-9
+const double pi=acos(-1.0);
 const long long mod=1e9+7;
 const int MAXN=1005;
 int a[MAXN][MAXN];//增广矩阵
@@ -87,55 +93,69 @@ int gauss(int equ,int var)
     }
     return 0;
 }
-
-ll qpow(ll a, ll b) {
-    ll ans = 1;
-    while(b) {
-        if(b & 1) ans = (ans * a) % mod;
-        a = (a * a) % mod;
-        b >>= 1;
+long long qpow(long long x,long long k)
+{
+    long long ans=1;
+    while(k)
+    {
+        if(k&1)
+        {
+            ans=ans*x%mod;
+        }
+        k>>=1;
+        x=x*x%mod;
     }
     return ans;
 }
 
-int vis[100000], prime[10000];
-int cnt;
-void init() {
-    memset(vis, 0, sizeof vis);
-    cnt = 0;
-    for(int i = 2; i <= 2000; i++) {
-        if(!vis[i]) prime[cnt++] = i;
-        for(int j = 0; j < cnt && i * prime[j] <= 2000; j++) {
-            vis[i * prime[j]] = true;
-            if(i % prime[j] == 0) break;
+bool notprime[2005];
+int prime[2005],prinum;
+void getprime()
+{
+    for(int i=2;i<=2000;i++)
+    {
+        if(!notprime[i])
+        {
+            prime[prinum++]=i;
+        }
+        for(int j=0;j<prinum&&i*prime[j]<=2000;j++)
+        {
+            notprime[i*prime[j]]=1;
+            if(i%prime[j]==0)break;
         }
     }
 }
-int n;
-long long v[303];
-int main() {
-    init();
-    int equ=cnt,var=0;
-    int _T; scanf("%d", &_T); int cas = 1;
-    while(_T--) {
-        scanf("%d", &n);
-        var=n;
-        for(int i = 0; i < n; i++) {
-            ll x; scanf("%I64d", &x);
-            v[i] = x;
-        }
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < cnt; j++) {
-                bool flag = false;
-                ll k = v[i], w = prime[j];
-                while(k % w == 0) flag ^= 1, k /= w;
-                a[j][i] = flag;
+int main()
+{
+    getprime();
+    int T;
+    scanf("%d",&T);
+    for(int cas=1;cas<=T;cas++)
+    {
+        int equ=prinum;
+        int var;
+        scanf("%d",&var);
+        for(int i=0;i<var;i++)
+        {
+            long long x;
+            scanf("%I64d",&x);
+            for(int j=0;j<equ;j++)
+            {
+                int flag=0;
+                if(x%prime[j]==0)
+                {
+                    while(x%prime[j]==0)
+                    {
+                        flag^=1;
+                        x/=prime[j];
+                    }
+                }
+                a[j][i]=flag;
             }
         }
-        ll ans = gauss(equ,var);
-        printf("Case #%d:\n", cas++);
-        if(ans == -1) printf("0\n");
-        else printf("%I64d\n", (qpow(2ll, ans) - 1 + mod) % mod);
+        int ans=gauss(equ,var);
+        printf("Case #%d:\n",cas);
+        printf("%I64d\n",(qpow(2,ans)+mod-1)%mod);
     }
     return 0;
 }
