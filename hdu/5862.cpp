@@ -153,44 +153,6 @@ int main()
             }
             sum+=qry(b[i].x2)-qry(b[i].x1-1);
         }
-        cnte=0;
-        for(int i=0; i<siza; i++)
-        {
-            e[cnte++]=event(a[i].y,a[i].x1,1);
-            e[cnte++]=event(a[i].y,a[i].x2,-1);
-        }
-        sort(e,e+cnte);
-        int res=0;
-        for(int i=0; i<cnte; i++)
-        {
-            if(e[i].info==1)
-            {
-                sum+=res;
-                res++;
-            }
-            else
-                res--;
-        }
-        cnte=0;
-        swap(a,b);
-        swap(siza,sizb);
-        for(int i=0; i<siza; i++)
-        {
-            e[cnte++]=event(a[i].y,a[i].x1,1);
-            e[cnte++]=event(a[i].y,a[i].x2,-1);
-        }
-        sort(e,e+cnte);
-        res=0;
-        for(int i=0; i<cnte; i++)
-        {
-            if(e[i].info==1)
-            {
-                sum+=res;
-                res++;
-            }
-            else
-                res--;
-        }
         printf("%I64d\n",sum);
     }
     return 0;
