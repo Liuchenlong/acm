@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 #define MAXN 100
-#define MAXM 100010
+#define MAXM 20010
 #define MAXP 666666
 #define MAX 10000010
 #define clr(ar) memset(ar, 0, sizeof(ar))
@@ -12,7 +12,7 @@ using namespace std;
 #define isprime(x) (( (x) && ((x)&1) && (!chkbit(ar, (x)))) || ((x) == 2))
 using namespace std;
 /**
-Çó1~1e11ÖĞÂú×ãx=p*p*p»òx=p*q,(p,q)Îª²»Í¬µÄËØÊıµÄ¸öÊı
+æ±‚1~1e11ä¸­æ»¡è¶³x=p*p*pæˆ–x=p*q,(p,q)ä¸ºä¸åŒçš„ç´ æ•°çš„ä¸ªæ•°
 */
 namespace pcf
 {
@@ -58,7 +58,7 @@ long long phi(long long m, int n)
     if (m < MAXM && n < MAXN) return dp[n][m];
     return phi(m, n - 1) - phi(m / primes[n - 1], n - 1);
 }
-//¸´ÔÓ¶ÈO(n^(2/3)),Çó1~nËØÊı¸öÊı
+//å¤æ‚åº¦O(n^(2/3)),æ±‚1~nç´ æ•°ä¸ªæ•°
 long long Lehmer(long long m)
 {
     if (m < MAX) return counter[m];
