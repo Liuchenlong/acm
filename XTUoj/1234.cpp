@@ -1,3 +1,6 @@
+/*
+题意:求C(n,m)%(3^k)
+*/
 #include<stdio.h>
 #include<cmath>
 #include<stdlib.h>
