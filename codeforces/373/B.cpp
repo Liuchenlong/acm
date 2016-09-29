@@ -20,17 +20,21 @@ int main()
     scanf("%d",&len);
     scanf("%s",str);
     int ans=0;
+    int wr=0,wb=0;
     for(int i=0;i<len;i++)
     {
-        if(i&1)if(str[i]=='r')ans++;
-        if((i&1)==0)if(str[i]=='b')ans++;
+        if(i&1)if(str[i]=='r')wr++;;
+        if((i&1)==0)if(str[i]=='b')wb++;
     }
-    int ans2=0;
+    ans=max(wr,wb);
+    wr=0;
+    wb=0;
     for(int i=0;i<len;i++)
     {
-        if(i&1)if(str[i]=='b')ans2++;
-        if((i&1)==0)if(str[i]=='r')ans2++;
+        if(i&1)if(str[i]=='b')wb++;
+        if((i&1)==0)if(str[i]=='r')wr++;
     }
-    printf("%d\n",min(ans,ans2));
+    ans=min(ans,max(wr,wb));
+    printf("%d\n",ans);
     return 0;
 }
