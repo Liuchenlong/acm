@@ -23,7 +23,7 @@ int main()
     scanf("%d%d",&n,&k);
     for(int i=0;i<n;i++)scanf("%d",&a[i]);
     memset(dp,-1,sizeof(dp));
-    for(int i=a[0];i<=k;i++){dp[0][i]=i-a[0];pre[0][i]=make_pair(-1,-1);}
+    for(int i=a[0];i<=500;i++){dp[0][i]=i-a[0];pre[0][i]=make_pair(-1,-1);}
     for(int i=1;i<n;i++)
     {
         for(int j=a[i];j<=500;j++)
