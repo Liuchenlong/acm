@@ -1,1 +1,1 @@
-# acm-icpc
+# acm-icpc training
